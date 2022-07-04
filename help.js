@@ -17,10 +17,10 @@ const buildEmbed = (page) => {
     let pagedHelps = sortedHelps.slice((MAX_PAGE_SIZE - 1) * (page - 1), ((MAX_PAGE_SIZE - 1) * page) + 1);
 
     let description = '';
-    pagedHelps.forEach((value, index) => {
+    pagedHelps.forEach((value) => {
         description +=
             `**${value.name}**\n
-            Использование: *${value.usage}*\n
+            Usage: *${value.usage}*\n
             ${value.description}\n\n`;
     });
 
@@ -49,6 +49,20 @@ export default class HelpModule extends AbstractModule {
                 description: description,
                 usage: usage
             });
+    }
+
+    /**
+     *
+     * @param {string} command
+     */
+    removeCommandHelp(command) {
+        for (const helpRecord in helps) {
+            if (helpRecord.name === command) {
+                let index = helps.indexOf(value);
+                helps.splice(index, 1);
+                break;
+            }
+        }
     }
 
     load() {
@@ -107,7 +121,7 @@ export default class HelpModule extends AbstractModule {
                     );
                 });
 
-                collector.on('end', collected => {
+                collector.on('end', () => {
                     newMessage.delete();
                 });
 
