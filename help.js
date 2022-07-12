@@ -42,7 +42,7 @@ export default class HelpModule extends AbstractModule {
      * @param {string} description
      * @param {string} usage
      */
-    addCommandHelp(command, description, usage) {
+    static addCommandHelp(command, description, usage) {
         helps.push(
             {
                 name: command,
@@ -55,7 +55,7 @@ export default class HelpModule extends AbstractModule {
      *
      * @param {string} command
      */
-    removeCommandHelp(command) {
+    static removeCommandHelp(command) {
         for (const helpRecord in helps) {
             if (helpRecord.name === command) {
                 let index = helps.indexOf(value);
@@ -128,7 +128,7 @@ export default class HelpModule extends AbstractModule {
             });
         });
 
-        this.addCommandHelp('help', 'Show this message', 'help');
+        HelpModule.addCommandHelp('help', 'Show this message', 'help');
     }
 
     unload() {
