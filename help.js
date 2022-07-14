@@ -20,7 +20,7 @@ const buildEmbed = (page) => {
     pagedHelps.forEach((value) => {
         description +=
             `**${value.name}**\n
-            Usage: *${value.usage}*\n
+            ${i18n.t('helpTranslate:usage')} *${value.usage}*\n
             ${value.description}\n\n`;
     });
 
