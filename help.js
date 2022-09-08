@@ -1,6 +1,9 @@
 import {MessageEmbed, MessageReaction} from "discord.js";
 import AbstractModule from "../../core/abstractModule.js";
 import CommandManager from "../../core/CommandManager/index.js";
+import Core from "../../core/core.js";
+
+let i18n = Core.getCore().getI18n();
 
 const helps = [];
 
